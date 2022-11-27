@@ -1,14 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 import './index.css';
-import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import SpoitfySearch from './pages/SpotifySearch';
+import ServiceSelection from './pages/ServiceSelection';
 import reportWebVitals from './reportWebVitals';
+import YoutubeSearch from './pages/YoutubeSearch';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ServiceSelection/>,
+  },
+  {
+    path: "spotify",
+    element: <SpoitfySearch />,
+  },
+  {
+    path: "youtube",
+    element: <YoutubeSearch />
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient()
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
