@@ -27,7 +27,7 @@ export default function SpoitfySearch() {
 
 
     const fetchSongs = async (search) => {
-        return await axios.get('http://localhost:8000/spotify-search', { params: {track: search}})
+        return await axios.get(`${process.env.API_URL}/spotify-search`, { params: {track: search}})
     }
 
     const items = data?.data.tracks.items
