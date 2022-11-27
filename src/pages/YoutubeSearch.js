@@ -27,7 +27,7 @@ export default function YoutubeSearch() {
 
 
     const fetchSongs = async (search) => {
-        return await axios.get(`${process.env.API_URL}/youtube-search`, { params: {track: search}})
+        return await axios.get(`${process.env.REACT_APP_API_URL}/youtube-search`, { params: {track: search}})
     }
 
     const items = data?.data.items

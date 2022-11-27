@@ -27,8 +27,15 @@ export default function SpoitfySearch() {
 
 
     const fetchSongs = async (search) => {
-        return await axios.get(`${process.env.API_URL}/spotify-search`, { params: {track: search}})
+        return await axios.get(`${process.env.REACT_APP_API_URL}/spotify-search`, { params: {track: search}})
     }
+
+    if (error) {
+        return (
+            <div> Oh No! ... </div>
+        )
+    }
+
 
     const items = data?.data.tracks.items
     return (
