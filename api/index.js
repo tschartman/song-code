@@ -12,10 +12,6 @@ const {google} = require('googleapis');
 
 const router = new Router();
 
-const data = {
-    grant_type: 'client_credentials'
-};
-
 router.get('koa-example', '/', (ctx) => {
   ctx.body = 'Hello World';
 });
@@ -25,6 +21,10 @@ router.get('test', '/test', async (ctx) => {
 })
 
 router.get('search', '/spotify-search', async (ctx) => {
+
+    const data = {
+        grant_type: 'client_credentials'
+    };
 
     const url = 'https://accounts.spotify.com/api/token';
 
